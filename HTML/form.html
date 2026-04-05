@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact – Vestes</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <style>
+        /* FORM PAGE STYLES */
+        .form-section {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 64px;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 560px;
+        }
+
+        .form-title {
+            font-size: 11px;
+            letter-spacing: 5px;
+            font-weight: 400;
+            margin-bottom: 48px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            color: #888;
+            transition: color 0.3s ease;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #d0d0d0;
+            padding: 10px 0;
+            font-size: 14px;
+            letter-spacing: 1px;
+            background: transparent;
+            outline: none;
+            font-family: inherit;
+            color: #000;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-bottom-color: #000;
+        }
+
+        .form-group input:focus + label,
+        .form-group textarea:focus + label {
+            color: #000;
+        }
+
+        .form-group textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        .form-group select {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        /* ERROR STYLES */
+        .form-group input.error,
+        .form-group select.error,
+        .form-group textarea.error {
+            border-bottom-color: #cc0000;
+        }
+
+        .error-msg {
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: #cc0000;
+            margin-top: 6px;
+            display: none;
+        }
+
+        .error-msg.visible {
+            display: block;
+        }
+
+        /* SUBMIT BUTTON */
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: #000;
+            color: #fff;
+            border: none;
+            font-size: 11px;
+            letter-spacing: 4px;
+            cursor: pointer;
+            margin-top: 16px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-submit:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        /* SUCCESS MESSAGE */
+        #success-message {
+            display: none;
+            text-align: center;
+            padding: 48px 0;
+        }
+
+        #success-message .success-icon {
+            font-size: 32px;
+            margin-bottom: 24px;
+        }
+
+        #success-message h2 {
+            font-size: 13px;
+            letter-spacing: 4px;
+            font-weight: 300;
+            margin-bottom: 12px;
+        }
+
+        #success-message p {
+            font-size: 11px;
+            color: #888;
+            letter-spacing: 2px;
+        }
+
+        /* ORDER SUMMARY */
+        #order-summary {
+            display: none;
+            background: #f8f8f8;
+            padding: 32px;
+            margin-top: 40px;
+            border-left: 2px solid #000;
+        }
+
+        #order-summary h3 {
+            font-size: 10px;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+
+        #order-summary .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        #order-summary .summary-row span:last-child {
+            color: #000;
+            font-weight: 500;
+        }
+
+        /* CHAR COUNTER */
+        .char-counter {
+            text-align: right;
+            font-size: 10px;
+            color: #aaa;
+            margin-top: 4px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">VESTES</div>
+    <nav>
+        <ul class="menu">
+            <li><a href="../index.html">HOME</a></li>
+            <li><a href="clothing.html">CLOTHING</a></li>
+            <li><a href="shoes.html">SHOES</a></li>
+            <li><a href="accessories.html">ACCESSORIES</a></li>
+            <li><a href="form.html">CONTACT</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="form-section">
+    <div class="form-container">
+        <h2 class="form-title">PLACE AN ORDER</h2>
+
+        <form id="order-form" novalidate>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">FIRST NAME</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="John">
+                    <span class="error-msg" id="firstName-error">Please enter your first name</span>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">LAST NAME</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Doe">
+                    <span class="error-msg" id="lastName-error">Please enter your last name</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">EMAIL ADDRESS</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com">
+                <span class="error-msg" id="email-error">Please enter a valid email address</span>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">PHONE NUMBER</label>
+                <input type="tel" id="phone" name="phone" placeholder="+373 xxx xxx xx">
+                <span class="error-msg" id="phone-error">Please enter a valid phone number</span>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="category">CATEGORY</label>
+                    <select id="category" name="category">
+                        <option value="">— SELECT —</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="shoes">Shoes</option>
+                        <option value="accessories">Accessories</option>
+                    </select>
+                    <span class="error-msg" id="category-error">Please select a category</span>
+                </div>
+                <div class="form-group">
+                    <label for="size">SIZE</label>
+                    <select id="size" name="size">
+                        <option value="">— SELECT —</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                    <span class="error-msg" id="size-error">Please select a size</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="message">ADDITIONAL NOTES</label>
+                <textarea id="message" name="message" placeholder="Special requests, color preferences..."></textarea>
+                <div class="char-counter"><span id="char-count">0</span> / 200</div>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submit-btn">SUBMIT ORDER</button>
+
+        </form>
+
+        <!-- SUCCESS MESSAGE -->
+        <div id="success-message">
+            <div class="success-icon">✦</div>
+            <h2>ORDER RECEIVED</h2>
+            <p id="success-detail">Thank you. We will contact you shortly.</p>
+        </div>
+
+        <!-- ORDER SUMMARY -->
+        <div id="order-summary">
+            <h3>ORDER SUMMARY</h3>
+            <div class="summary-row"><span>NAME</span><span id="sum-name">—</span></div>
+            <div class="summary-row"><span>EMAIL</span><span id="sum-email">—</span></div>
+            <div class="summary-row"><span>PHONE</span><span id="sum-phone">—</span></div>
+            <div class="summary-row"><span>CATEGORY</span><span id="sum-category">—</span></div>
+            <div class="summary-row"><span>SIZE</span><span id="sum-size">—</span></div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    © 2026 VESTES
+    <div class="footer-contact">
+        <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a7c4c8c9d3c6c4d3e7d1c2d4d3c2d489c4c8ca">[email&#160;protected]</a> · Instagram @vestes
+    </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // ─────────────────────────────────────────
+    //  FORM VALIDATION & PROCESSING — Lab 3
+    // ─────────────────────────────────────────
+
+    const form = document.getElementById('order-form');
+    const successMsg = document.getElementById('success-message');
+    const orderSummary = document.getElementById('order-summary');
+    const textarea = document.getElementById('message');
+    const charCount = document.getElementById('char-count');
+
+    // ── 1. Character counter for textarea ──
+    textarea.addEventListener('input', function () {
+        const len = this.value.length;
+        charCount.textContent = len;
+        if (len > 200) {
+            this.value = this.value.substring(0, 200);
+            charCount.textContent = 200;
+        }
+        charCount.style.color = len >= 180 ? '#cc0000' : '#aaa';
+    });
+
+    // ── 2. Real-time input validation ──
+    document.querySelectorAll('input, select, textarea').forEach(function (field) {
+        field.addEventListener('blur', function () {
+            validateField(this);
+        });
+    });
+
+    // ── 3. Validate individual field ──
+    function validateField(field) {
+        const id = field.id;
+        const value = field.value.trim();
+        let valid = true;
+
+        if (id === 'firstName' || id === 'lastName') {
+            valid = value.length >= 2;
+        } else if (id === 'email') {
+            valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        } else if (id === 'phone') {
+            valid = /^[\+\d\s\-\(\)]{7,20}$/.test(value);
+        } else if (id === 'category' || id === 'size') {
+            valid = value !== '';
+        }
+
+        const errorEl = document.getElementById(id + '-error');
+        if (errorEl) {
+            field.classList.toggle('error', !valid);
+            errorEl.classList.toggle('visible', !valid);
+        }
+
+        return valid;
+    }
+
+    // ── 4. Form submit handler ──
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const fields = ['firstName', 'lastName', 'email', 'phone', 'category', 'size'];
+        let allValid = true;
+
+        fields.forEach(function (id) {
+            const field = document.getElementById(id);
+            if (!validateField(field)) {
+                allValid = false;
+            }
+        });
+
+        if (!allValid) return;
+
+        // ── 5. Collect & display data ──
+        const firstName = document.getElementById('firstName').value.trim();
+        const lastName  = document.getElementById('lastName').value.trim();
+        const email     = document.getElementById('email').value.trim();
+        const phone     = document.getElementById('phone').value.trim();
+        const category  = document.getElementById('category').value;
+        const size      = document.getElementById('size').value;
+
+        // Populate summary
+        document.getElementById('sum-name').textContent     = firstName + ' ' + lastName;
+        document.getElementById('sum-email').textContent    = email;
+        document.getElementById('sum-phone').textContent    = phone;
+        document.getElementById('sum-category').textContent = category.toUpperCase();
+        document.getElementById('sum-size').textContent     = size;
+
+        document.getElementById('success-detail').textContent =
+            'Thank you, ' + firstName + '. We will contact you at ' + email + '.';
+
+        // ── 6. Show success, hide form ──
+        form.style.display = 
