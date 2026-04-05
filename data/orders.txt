@@ -1,0 +1,9 @@
+──────────────────────────────────────────────────
+Date:      2026-04-05 22:04:03
+Name:      asd asd
+Email:     asdasd@gmail.com
+Phone:     +37360090909
+Category:  clothing
+Size:      L
+Notes:     asdasd
+
